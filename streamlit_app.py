@@ -8,7 +8,7 @@ Original file is located at
 """
 
 import streamlit as st
-import random
+from transformers import pipeline
 
 # Título de la aplicación
 st.title("Tu relación con el alcohol")
@@ -89,28 +89,36 @@ if term_selected in terminos:
 # Personalización de diseño
 
 
-st.title("Chatbot de Consejos para Mantenerse Sobrio")
+st.title("Chatbot de Consejos para Mantenerse Sobrio con NLP")
 
-# Lista de consejos
-tips = [
-    "Establece metas claras y alcanzables.",
-    "Rodéate de personas que apoyen tu sobriedad.",
-    "Mantente ocupado con actividades saludables.",
-    "Asiste a reuniones de apoyo, como AA.",
-    "Recuerda tus motivos para permanecer sobrio.",
-    "Practica el autocuidado y cuida de tu salud mental.",
-    "Establece un sistema de recompensas para tus logros.",
-    "No salgas a la calle con dinero de más, solo el necesario.",
-]
+# Carga del modelo NLP para generar respuestas
+# Usa el pipeline de pregunta-respuesta para entender las consultas del usuario
+nlp = pipeline("question-answering", model="distilbert-base-uncased-distilled-squad")
 
-def get_advice(query):
-    # Responder con un consejo aleatorio de la lista
-    return random.choice(tips)
+# Base de conocimientos sobre la sobriedad
+advice_data = """
+Aquí tienes algunos consejos para mantenerte sobrio:
+- Establece metas claras y alcanzables para tu proceso de sobriedad.
+- Rodéate de personas que te apoyen y mantén una red de apoyo.
+- Busca actividades saludables y que te mantengan ocupado.
+- Considera asistir a reuniones de apoyo, como Alcohólicos Anónimos (AA).
+- Recuerda tus motivos para permanecer sobrio, mantente enfocado.
+- Practica el autocuidado: ejercicio, buena alimentación y descanso.
+- Establece un sistema de recompensas para tus logros y avances.
+- No salgas con dinero de más, puedes recaer.
+- Evita frecuentar lugares donde acostumbras tomar.
+- Recueda que la mente te engaña facilmente, mantente firme en tu sobriedad.
+"""
 
-# Interfaz del Chatbot
-query = st.text_input("Escribe un númro del 1 al 10 (el que tu gustes) y te pararecerá un consejo para tu sobriedad:")
-if query:
-    response = get_advice(query)
+def get_advice(question):
+    # Usa el pipeline para generar una respuesta en función de la pregunta del usuario
+    result = nlp(question=question, context=advice_data)
+    return result["answer"]
+
+# Entrada del usuario
+user_query = st.text_input("Escribe tu pregunta o consulta sobre sobriedad:")
+if user_query:
+    response = get_advice(user_query)
     st.write("Chatbot:", response)
 
 st.markdown("""

@@ -1,6 +1,9 @@
 streamlit
 pandas
 numpy
+random
+transformers
+torch
 scikit-learn
 tensorflow-cpu
 matplotlib
