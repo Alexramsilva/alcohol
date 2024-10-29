@@ -8,10 +8,11 @@ Original file is located at
 """
 
 import streamlit as st
+import random
 
 # Título de la aplicación
 st.title("Tu relación con el alcohol")
-st.image("al.png", caption="UST-URC Universidad Rosario Castellanos", width=200)
+st.image("all.png",  width=200)
 
 
 
@@ -23,11 +24,11 @@ Esta aplicación tiene como objetivo compartir mis experiencias sobre el alcohol
 # Diccionario de términos con multimedia
 terminos = {
     "Salud": {
-        "descripcion": "No es necesario saber mucho acerca de la medicina para entender que te dañas tu higado.",
+        "descripcion": "No es necesario saber mucho acerca de medicina, para entender que te dañas tu higado.",
         "image": "al.png"
     },
     "Energía": {
-        "descripcion": "Despues de una borrachera, pierdes mucha energía y ritmode lo que venías haciendo.",
+        "descripcion": "Despues de una borrachera, pierdes mucha energía y ritmo de lo que venías haciendo.",
         "image": "al.png"
     },
     "Resaca": {
@@ -39,15 +40,15 @@ terminos = {
         "image": "al.png"
     },
     "Productividad": {
-        "descripcion": "Tu productividad baja considerablemente, no hay mejor aliado que un cafecito (el mejor aliado).",
+        "descripcion": "Tu productividad baja considerablemente, no hay mejor aliado que un cafecito (tu mejor compañero).",
         "image": "al.png"
     },
     "Memoria": {
-        "descripcion": "Con el pasar del tiempo (por lo regular una semana) las consecuencias del alcohol se te olvidan y la mente te engaña haciendote creer que te la pasarás muy bien.",
+        "descripcion": "Con el pasar del tiempo (por lo regular una semana o más) las consecuencias del alcohol se te olvidan y la mente te engaña haciendote creer que te la pasarás muy bien.",
         "image": "al.png"
     },
     "Familia": {
-        "descripcion": "La familia la descuidas la lastimas y es la más afectada de tus actos bajo elalcohol.",
+        "descripcion": "La familia la descuidas y la lastimas, es la más afectada de tus actos bajo el influjo del alcohol.",
         "image": "al.png"
     },
     "Relaciones sentimentales": {
@@ -63,7 +64,7 @@ terminos = {
         "image": "al.png"
     },
     "Amistad": {
-        "descripcion": "Laamistad en la fiesta no existe, si traes dinero amigos te sobrarán, pero si no estarás de nuevo solo.",
+        "descripcion": "La amistad en la fiesta no existe, si traes dinero amigos te sobrarán, pero si no estarás de nuevo solo.",
         "image": "al.png"
     },
     "Riesgo": {
@@ -86,6 +87,32 @@ if term_selected in terminos:
     # st.image(terminos[term_selected]["gif"], caption=f"GIF representativo de {term_selected}")
     st.image(terminos[term_selected]["image"])
 # Personalización de diseño
+
+
+st.title("Chatbot de Consejos para Mantenerse Sobrio")
+
+# Lista de consejos
+tips = [
+    "Establece metas claras y alcanzables.",
+    "Rodéate de personas que apoyen tu sobriedad.",
+    "Mantente ocupado con actividades saludables.",
+    "Asiste a reuniones de apoyo, como AA.",
+    "Recuerda tus motivos para permanecer sobrio.",
+    "Practica el autocuidado y cuida de tu salud mental.",
+    "Establece un sistema de recompensas para tus logros.",
+    "No salgas a la calle con dinero de más, solo el necesario.",
+]
+
+def get_advice(query):
+    # Responder con un consejo aleatorio de la lista
+    return random.choice(tips)
+
+# Interfaz del Chatbot
+query = st.text_input("Escribe tu pregunta o consulta:")
+if query:
+    response = get_advice(query)
+    st.write("Chatbot:", response)
+
 st.markdown("""
 <style>
     .stApp {
@@ -115,7 +142,7 @@ st.markdown("""
             <strong>Colaboración:</strong>
         </p>
         <p style="margin-top:0;margin-bottom:0;font-size:12px;color:  #979394 ;text-align:center">
-            <strong>Alex  LCFI-URC</strong>
+            <strong>El Alex </strong>
         </p>
         <p style="margin-top:0;margin-bottom:0;font-size:12px;color:  #979394 ;text-align:center">
             <strong>Mil y una fiestas</strong>
