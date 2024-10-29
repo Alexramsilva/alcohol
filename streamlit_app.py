@@ -18,7 +18,7 @@ st.image("all.png",  width=200)
 
 # Introducción
 st.write("""
-Esta aplicación tiene como objetivo compartir mis experiencias sobre el alcohol que he vivido.
+Esta aplicación tiene como objetivo compartir experiencias sobre el alcohol que hemos vivido.
 """)
 
 # Diccionario de términos con multimedia
@@ -44,7 +44,7 @@ terminos = {
         "image": "al.png"
     },
     "Memoria": {
-        "descripcion": "Con el pasar del tiempo (por lo regular una semana o más) las consecuencias del alcohol se te olvidan y la mente te engaña haciendote creer que te la pasarás muy bien.",
+        "descripcion": "Con el pasar del tiempo (por lo regular una semana o más) las consecuencias del alcohol se te olvidan y tu mente te engaña (facilmente) haciendote creer que te la pasarás muy bien.",
         "image": "al.png"
     },
     "Familia": {
@@ -56,7 +56,7 @@ terminos = {
         "image": "al.png"
     },
     "Dinero": {
-        "descripcion": "Desperdicias mucho tu dinero,eres muy dadivoso (cuando en realidad cuesta mucho trabajo ganarlo).",
+        "descripcion": "Desperdicias mucho tu dinero,cuando en realidad cuesta mucho trabajo ganarlo.",
         "image": "al.png"
     },
     "Ahorro": {
@@ -72,7 +72,7 @@ terminos = {
         "image": "al.png"
     },
     "Metas": {
-        "descripcion": "Tus metas y logros personales se dejan de cumplir,además de tu crecimiento personal.",
+        "descripcion": "Tus metas y logros personales se dejan de cumplir, además de tu crecimiento personal.",
         "image": "al.png"
     },
 }
@@ -108,7 +108,7 @@ def get_advice(query):
     return random.choice(tips)
 
 # Interfaz del Chatbot
-query = st.text_input("Escribe tu pregunta o consulta:")
+query = st.text_input("Escribe un númro del 1 al 10 (el que tu gustes) y te pararecerá un consejo para tu sobriedad:")
 if query:
     response = get_advice(query)
     st.write("Chatbot:", response)
