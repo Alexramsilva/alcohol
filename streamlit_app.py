@@ -110,6 +110,15 @@ Aquí tienes algunos consejos para mantenerte sobrio:
 - Recueda que la mente te engaña facilmente, mantente firme en tu sobriedad.
 - Aplica el principio de solo por hoy.
 - Ten cuidado con tu sobervia, te puede hacer sentir por encima de los demás o por debajo.
+- Evita malgastar tu dinero y una cruda moral que te hará sentir muy mal.
+- No pierdas el ritmo,conserva tu concentración.
+- El alcohol espera que te descuides para que recaigas nuevamente.
+- Enfocate en tu proceso de creatividad y conexión contigo mismo.
+- Proponte metas de ahorro y diciplina financiera.
+- A veces ya no recuerdas qué se siente llegar los fines de semana a tu casa.
+- Cuando te sientes feliz o contento y muy conectado,eres muy propenso a tomar.
+- Lleva un control de tus finanzas diarias.
+
 """
 
 def get_advice(question):
@@ -123,22 +132,6 @@ user_query = st.text_input("Escribe tu pregunta o consulta sobre sobriedad:")
 if user_query:
     response = get_advice(user_query)
     st.write("Chatbot:", response)
-
-# Título de la aplicación
-st.title("Tu comportamiento con el alcohol")
-
-# Enlace de tu informe de Looker Studio (reemplaza con el tuyo)
-looker_studio_url = "https://lookerstudio.google.com/reporting/3e50f3fa-ea36-409a-b612-5d49e66a88d6"
-
-
-# Mostrar el informe de Looker Studio en un iframe dentro de Streamlit
-st.markdown(
-    f"""
-    <iframe src="{looker_studio_url}" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
-    """,
-    unsafe_allow_html=True
-)
-
 
 
 st.markdown("""
